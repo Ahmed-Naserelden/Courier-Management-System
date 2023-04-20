@@ -8,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
 
@@ -16,11 +17,11 @@ namespace Courier_Management_System
 
 
     
-    public partial class Form1 : Form
+    public partial class LoginForm : Form
     {
         OracleConnection conn;
         string ordb = "Data Source=ORCL;User Id=scott;Password=tiger;";
-        public Form1()
+        public LoginForm()
         {
             InitializeComponent();
         }
@@ -66,14 +67,29 @@ namespace Courier_Management_System
 
             if (exist == true)
             {
-                MessageBox.Show("Login Succesfully !!");
+                // MessageBox.Show("Login Succesfully !!");
+                HomeForm home = new HomeForm();
+                home.Tag = this;
+                home.Show(this);
+                home.StartPosition = FormStartPosition.Manual;
+                home.Location = this.Location;
+                this.Hide();
             }
             else
             {
                 MessageBox.Show("Login faild !! ");
-
             }
             //dr.Close();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            RegisterForm register = new RegisterForm();
+            register.Tag = this;
+            register.StartPosition = FormStartPosition.Manual;
+            register.Location = this.Location;
+            register.Show(this);
+            this.Hide();
         }
     }
 }
