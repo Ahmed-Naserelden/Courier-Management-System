@@ -26,28 +26,42 @@ namespace Courier_Management_System
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private int getIcome()
         {
-            conn = new OracleConnection(ordb);
-            //user  = new User();
-            conn.Open();
             OracleCommand cmd = new OracleCommand();
             cmd.Connection = conn;
             cmd.CommandText = "GETGATE";
-            cmd.CommandType= CommandType.StoredProcedure;
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("res", OracleDbType.Int32, ParameterDirection.Output);
             cmd.ExecuteNonQuery();
             int res;
             try
             {
                 res = Convert.ToInt32(cmd.Parameters["res"].Value.ToString());
-                email.Text = res.ToString();
+                // email.Text = res.ToString();
             }
             catch
             {
                 res = 1;
             }
+            return res;
+        }
 
+        private void goToHome()
+        {
+            HomeForm home = new HomeForm();
+            home.Tag = this;
+            home.Show(this);
+            home.StartPosition = FormStartPosition.Manual;
+            home.Location = this.Location;
+            this.Hide();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            conn = new OracleConnection(ordb);
+            //user  = new User();
+            conn.Open();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -57,80 +71,38 @@ namespace Courier_Management_System
 
         private void loginbtn_Click(object sender, EventArgs e)
         {
+            // Single Row
             OracleCommand cmd = new OracleCommand();
             cmd.Connection = conn;
-            // cmd.CommandText = "select * from customers where c_email=:emial and c_password=:password";
-            cmd.CommandText = "USERIFO";
-            // cmd.CommandType = CommandType.Text;
+
+            cmd.CommandText = "USERINFO";
             cmd.CommandType = CommandType.StoredProcedure;
 
-            string emailtext = email.Text, passwordtext = password.Text;
-            cmd.Parameters.Add("email", emailtext);
-            cmd.Parameters.Add("password", passwordtext);
-            cmd.Parameters.Add("name", OracleDbType.Varchar2, ParameterDirection.Output);
-            cmd.Parameters.Add("address", OracleDbType.Varchar2, ParameterDirection.Output);
-            cmd.Parameters.Add("phone", OracleDbType.Varchar2, ParameterDirection.Output);
-            cmd.Parameters.Add("creditcard", OracleDbType.Varchar2, ParameterDirection.Output);
-            
-            
-            //cmd.Parameters.Add("email", emailtext);
-            //cmd.Parameters.Add("password", passwordtext);
+            cmd.Parameters.Add("email", OracleDbType.Varchar2, "an2071497@gmail.com", ParameterDirection.Input);       // input Parameter
+            cmd.Parameters.Add("cpassword", OracleDbType.Varchar2, "123456789", ParameterDirection.Input);             // input Parameter
 
-            // OracleDataReader dr = cmd.ExecuteReader();
-            cmd.ExecuteNonQuery();
+            // cmd.Parameters.Add("email", "an2071497@gmail.com");
+            // cmd.Parameters.Add("cpassword", "123456789");
+
+            cmd.Parameters.Add("cname", OracleDbType.Varchar2, ParameterDirection.Output);                             // output Parameter
+            cmd.Parameters.Add("caddress", OracleDbType.Varchar2, ParameterDirection.Output);                          // output Parameter
+            cmd.Parameters.Add("cphone", OracleDbType.Varchar2, ParameterDirection.Output);                            // output Parameter
+            cmd.Parameters.Add("ccrditcard", OracleDbType.Varchar2, ParameterDirection.Output);                        // output Parameter
+            
+            int r =  cmd.ExecuteNonQuery();
             try
             {
-                AccountInfo.user.Name = cmd.Parameters["name"].Value.ToString();
-                AccountInfo.user.Name = cmd.Parameters["address"].Value.ToString();
-                AccountInfo.user.Name = cmd.Parameters["phone"].Value.ToString();
-                AccountInfo.user.Name = cmd.Parameters["creditcard"].Value.ToString();
-                HomeForm home = new HomeForm();
-                home.Tag = this;
-                home.Show(this);
-                home.StartPosition = FormStartPosition.Manual;
-                home.Location = this.Location;
-                this.Hide();
-            }
-            catch
-            {
+                AccountInfo.user.Email = email.Text;
+                AccountInfo.user.Password = password.Text;
+                AccountInfo.user.Name = cmd.Parameters["cname"].Value.ToString();
+                AccountInfo.user.Address = cmd.Parameters["caddress"].Value.ToString();
+                AccountInfo.user.Phone = cmd.Parameters["cphone"].Value.ToString();
+                AccountInfo.user.CreditCard = cmd.Parameters["ccreditcard"].Value.ToString();
+                
+            }catch{
                 MessageBox.Show("Login faild !! ");
             }
-
-
-            string name = "", phone = "", creditCard = "", address = "";
-
-            bool exist = false;
-
-            //if (dr.Read())
-            //{
-            //    name = dr[0].ToString();
-            //    creditCard = dr[1].ToString();
-            //    phone = dr[4].ToString();
-            //    address = dr[5].ToString();
-            //    exist = true;
-            //    AccountInfo.user.Name = name;
-            //    AccountInfo.user.CreditCard = creditCard;
-            //    AccountInfo.user.Phone = phone;
-            //    AccountInfo.user.Address = address;
-            //    AccountInfo.user.Password = passwordtext;
-            //    AccountInfo.user.Email = emailtext;
-            //}
-
-            //if (exist == true)
-            //{
-            //    // MessageBox.Show("Login Succesfully !!");
-            //    HomeForm home = new HomeForm();
-            //    home.Tag = this;
-            //    home.Show(this);
-            //    home.StartPosition = FormStartPosition.Manual;
-            //    home.Location = this.Location;
-            //    this.Hide();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Login faild !! ");
-            //}
-            ////dr.Close();
+            goToHome();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
