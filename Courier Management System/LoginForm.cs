@@ -93,8 +93,6 @@ namespace Courier_Management_System
 
             #region stor
 
-
-            
             OracleCommand cmd = new OracleCommand();
             cmd.Connection = conn;
             cmd.CommandText = "select * from customers where c_email=:emial and c_password=:password";
