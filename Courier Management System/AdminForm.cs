@@ -39,6 +39,7 @@ namespace Courier_Management_System
         private void button2_Click(object sender, EventArgs e)
         {
 
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -68,10 +69,50 @@ namespace Courier_Management_System
             //dr.Close();
         }
 
+
+        private void viewDriver_Click(object sender, EventArgs e)
+        {
+
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = conn;
+
+            cmd.CommandText = "viewDriverInfo";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("row", OracleDbType.RefCursor, ParameterDirection.Output);
+
+            OracleDataReader dr = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(dr);
+            dataGridView1.DataSource = dt;
+        }
+
+
+
         private void AdminForm_Load(object sender, EventArgs e)
         {
             conn = new OracleConnection(ordb);
             conn.Open();
+
+
+
+        }
+
+        private void viewOrder_Click(object sender, EventArgs e)
+        {
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = conn;
+
+            cmd.CommandText = "viewOrdersInfo";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("row", OracleDbType.RefCursor, ParameterDirection.Output);
+
+            OracleDataReader dr = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(dr);
+            dataGridView1.DataSource = dt;
+
         }
     }
 }

@@ -57,7 +57,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "View drivers";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.viewDriver_Click);
             // 
             // button2
             // 
@@ -79,6 +79,7 @@
             this.button3.TabIndex = 5;
             this.button3.Text = "View orders";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.viewOrder_Click);
             // 
             // dataGridView1
             // 

@@ -1,0 +1,7 @@
+create or replace PROCEDURE viewDriverInfo
+(DriverInfo out sys_refcursor)
+as
+begin
+    open DriverInfo for
+      select * from drivers  ;
+end ;

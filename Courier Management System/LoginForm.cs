@@ -100,8 +100,8 @@ namespace Courier_Management_System
             conn = new OracleConnection(ordb);
             //user  = new User();
             conn.Open();
-            email.Text = "admin@a.com";
-            password.Text = "admin";
+            //email.Text = "admin@a.com";
+            //password.Text = "admin";
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
