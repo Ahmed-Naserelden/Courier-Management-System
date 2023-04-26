@@ -47,9 +47,26 @@ namespace Courier_Management_System
             return res;
         }
 
+        private void getUserOrder(string email)
+        {
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "customer_orders";
+            cmd.CommandType= CommandType.StoredProcedure;
+            cmd.Parameters.Add("email", email);
+            cmd.Parameters.Add("orders", OracleDbType.RefCursor, ParameterDirection.Output);     
+            
+            OracleDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+
+            }
+            dr.Close();
+
+        }
         private void goToHome()
         {
-            HomeForm home = new HomeForm();
+            CustomerFrom home = new CustomerFrom();
             home.Tag = this;
             home.Show(this);
             home.StartPosition = FormStartPosition.Manual;
@@ -62,6 +79,8 @@ namespace Courier_Management_System
             conn = new OracleConnection(ordb);
             //user  = new User();
             conn.Open();
+            email.Text = "an2071497@gmail.com";
+            password.Text = "123456789";
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -71,38 +90,57 @@ namespace Courier_Management_System
 
         private void loginbtn_Click(object sender, EventArgs e)
         {
-            // Single Row
+
+            #region stor
+
+
+            
             OracleCommand cmd = new OracleCommand();
             cmd.Connection = conn;
+            cmd.CommandText = "select * from customers where c_email=:emial and c_password=:password";
+            cmd.CommandType = CommandType.Text;
 
-            cmd.CommandText = "USERINFO";
-            cmd.CommandType = CommandType.StoredProcedure;
+            string emailtext = email.Text, passwordtext = password.Text;
+            cmd.Parameters.Add("email", emailtext);
+            cmd.Parameters.Add("password", passwordtext);
 
-            cmd.Parameters.Add("email", OracleDbType.Varchar2, "an2071497@gmail.com", ParameterDirection.Input);       // input Parameter
-            cmd.Parameters.Add("cpassword", OracleDbType.Varchar2, "123456789", ParameterDirection.Input);             // input Parameter
+            OracleDataReader dr = cmd.ExecuteReader();
 
-            // cmd.Parameters.Add("email", "an2071497@gmail.com");
-            // cmd.Parameters.Add("cpassword", "123456789");
+            string name = "", phone = "", creditCard = "", address = "";
 
-            cmd.Parameters.Add("cname", OracleDbType.Varchar2, ParameterDirection.Output);                             // output Parameter
-            cmd.Parameters.Add("caddress", OracleDbType.Varchar2, ParameterDirection.Output);                          // output Parameter
-            cmd.Parameters.Add("cphone", OracleDbType.Varchar2, ParameterDirection.Output);                            // output Parameter
-            cmd.Parameters.Add("ccrditcard", OracleDbType.Varchar2, ParameterDirection.Output);                        // output Parameter
-            
-            int r =  cmd.ExecuteNonQuery();
-            try
+            bool exist = false;
+
+            if (dr.Read())
             {
-                AccountInfo.user.Email = email.Text;
-                AccountInfo.user.Password = password.Text;
-                AccountInfo.user.Name = cmd.Parameters["cname"].Value.ToString();
-                AccountInfo.user.Address = cmd.Parameters["caddress"].Value.ToString();
-                AccountInfo.user.Phone = cmd.Parameters["cphone"].Value.ToString();
-                AccountInfo.user.CreditCard = cmd.Parameters["ccreditcard"].Value.ToString();
-                
-            }catch{
+                name = dr[0].ToString();
+                creditCard = dr[1].ToString();
+                phone = dr[4].ToString();
+                address = dr[5].ToString();
+                AccountInfo.user.Name = name;
+                AccountInfo.user.Phone = phone;
+                AccountInfo.user.Address = address;
+                AccountInfo.user.CreditCard = creditCard;
+                AccountInfo.user.Password = passwordtext;
+                AccountInfo.user.Email= emailtext;
+                exist = true;
+            }
+            
+            dr.Close();
+            if (exist == true)
+            {
+                // MessageBox.Show("Login Succesfully !!");
+                CustomerFrom home = new CustomerFrom();
+                home.Tag = this;
+                home.Show(this);
+                home.StartPosition = FormStartPosition.Manual;
+                home.Location = this.Location;
+                this.Hide();
+            }
+            else
+            {
                 MessageBox.Show("Login faild !! ");
             }
-            goToHome();
+            #endregion
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -101,13 +101,14 @@ namespace Courier_Management_System
                 cmd.Parameters.Add("c_password", user.Password);
                 cmd.Parameters.Add("c_phone", user.Phone);
                 cmd.Parameters.Add("c_address", user.Address);
+                
                 try
                 {
                     int r = cmd.ExecuteNonQuery();
                     if (r != -1)
                     {
                         // MessageBox.Show("Wellcome :) You Now Have an Account :)");
-                        HomeForm home = new HomeForm();
+                        CustomerFrom home = new CustomerFrom();
                         home.Tag = this;
                         home.Show(this);
                         home.StartPosition = FormStartPosition.Manual;
@@ -118,6 +119,7 @@ namespace Courier_Management_System
                 catch {
                     MessageBox.Show(":( Some Error Occure");
                 }
+                
                 //passnotequal.Visible = false;
             }
             else
