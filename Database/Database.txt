@@ -1,32 +1,33 @@
+
 CREATE TABLE deliveries(
   delivery_id int NOT NULL,
-  c_email varchar(255),
-  d_email varchar(255),
-  destinatoin_address varchar(255),
-  source_address varchar(255),
+  c_email varchar2(255),
+  d_email varchar2(255),
+  destinatoin_address varchar2(255),
+  source_address varchar2(255),
   pakage_size integer,
-  status varchar(255),
-  processdate DATE
-  PRIMARY KEY (delivery_id),
+  status varchar2(255),
+  processdate DATE ,
+  PRIMARY KEY(delivery_id)
 --  FOREIGN KEY (c_email) REFERENCES customers(c_email),
 --  FOREIGN KEY (d_email) REFERENCES drivers(d_email)
 );
 
 CREATE TABLE customers(
-  c_name varchar(255),
-  c_creditcard_num varchar(255),
-  c_email varchar(255),
-  c_password varchar(254),
-  c_phone varchar(254),
-  c_address varchar(255),
-  PRIMARY KEY (c_email)
+  c_name varchar2(255),
+  c_creditcard_num varchar2(255),
+  c_email varchar2(255),
+  c_password varchar2(255),
+  c_phone varchar2(255),
+  c_address varchar2(255),
+  PRIMARY KEY(c_email)
 );
 
 
 CREATE TABLE admins(
   email varchar(255)NOT NULL,
   adminPassword varchar(254),
-  PRIMARY KEY (email)
+  PRIMARY KEY(email)
 );
 
 CREATE TABLE drivers(
