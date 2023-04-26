@@ -1,0 +1,40 @@
+CREATE TABLE deliveries(
+  delivery_id int NOT NULL,
+  c_email varchar(255),
+  d_email varchar(255),
+  destinatoin_address varchar(255),
+  source_address varchar(255),
+  pakage_size integer,
+  status varchar(255),
+  processdate DATE
+  PRIMARY KEY (delivery_id),
+--  FOREIGN KEY (c_email) REFERENCES customers(c_email),
+--  FOREIGN KEY (d_email) REFERENCES drivers(d_email)
+);
+
+CREATE TABLE customers(
+  c_name varchar(255),
+  c_creditcard_num varchar(255),
+  c_email varchar(255),
+  c_password varchar(254),
+  c_phone varchar(254),
+  c_address varchar(255),
+  PRIMARY KEY (c_email)
+);
+
+
+CREATE TABLE admins(
+  email varchar(255)NOT NULL,
+  adminPassword varchar(254),
+  PRIMARY KEY (email)
+);
+
+CREATE TABLE drivers(
+  d_name varchar(255),
+  d_creditcard_num varchar(255),
+  d_email varchar(255),
+  d_password varchar(254),
+  d_phone varchar(254),
+  d_address varchar(255),
+  PRIMARY KEY(d_email)
+);

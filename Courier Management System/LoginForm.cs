@@ -64,9 +64,30 @@ namespace Courier_Management_System
             dr.Close();
 
         }
-        private void goToHome()
+
+        private void goToDriverHome()
+        {
+            DriverForm home = new DriverForm();
+            home.Tag = this;
+            home.Show(this);
+            home.StartPosition = FormStartPosition.Manual;
+            home.Location = this.Location;
+            this.Hide();
+        }
+
+        private void goToCustomerHome()
         {
             CustomerFrom home = new CustomerFrom();
+            home.Tag = this;
+            home.Show(this);
+            home.StartPosition = FormStartPosition.Manual;
+            home.Location = this.Location;
+            this.Hide();
+        }
+
+        private void goToAdminHome()
+        {
+            AdminForm home = new AdminForm();
             home.Tag = this;
             home.Show(this);
             home.StartPosition = FormStartPosition.Manual;
@@ -79,8 +100,8 @@ namespace Courier_Management_System
             conn = new OracleConnection(ordb);
             //user  = new User();
             conn.Open();
-            email.Text = "an2071497@gmail.com";
-            password.Text = "123456789";
+            email.Text = "admin@a.com";
+            password.Text = "admin";
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -92,22 +113,41 @@ namespace Courier_Management_System
         {
 
             #region stor
-
             OracleCommand cmd = new OracleCommand();
-            cmd.Connection = conn;
-            cmd.CommandText = "select * from customers where c_email=:emial and c_password=:password";
-            cmd.CommandType = CommandType.Text;
-
+            OracleCommand cmd2 = new OracleCommand();
+            OracleCommand cmd3 = new OracleCommand();
             string emailtext = email.Text, passwordtext = password.Text;
+            
+            // cmd
+            cmd.Connection = conn;
+            cmd.CommandText = "select * from customers where c_email=:email and c_password=:password";
+            cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("email", emailtext);
             cmd.Parameters.Add("password", passwordtext);
 
-            OracleDataReader dr = cmd.ExecuteReader();
+            //cmd2
+            cmd2.Connection = conn;
+            cmd2.CommandText = "select * from drivers where d_email=:email and d_password=:password";
+            cmd2.CommandType = CommandType.Text;
+            cmd2.Parameters.Add("email", emailtext);
+            cmd2.Parameters.Add("password", passwordtext);
+
+            //cmd3
+            cmd3.Connection = conn;
+            cmd3.CommandText = "select * from admins where email=:email and ADMINPASSWORD=:password";
+            cmd3.CommandType = CommandType.Text;
+            cmd3.Parameters.Add("email", emailtext);
+            cmd3.Parameters.Add("password", passwordtext);
+
+
+
+
 
             string name = "", phone = "", creditCard = "", address = "";
-
             bool exist = false;
+            int whereIs = -1;
 
+            OracleDataReader dr = cmd.ExecuteReader();
             if (dr.Read())
             {
                 name = dr[0].ToString();
@@ -122,22 +162,41 @@ namespace Courier_Management_System
                 AccountInfo.user.Email= emailtext;
                 exist = true;
             }
-            
             dr.Close();
+            if(exist == true)
+            {
+                goToCustomerHome();
+                return;
+            }
+            OracleDataReader dr2 = cmd.ExecuteReader();
+            dr2 = cmd2.ExecuteReader();
+            if (dr2.Read())
+            {
+                
+                exist = true;
+            }
+            dr2.Close();
             if (exist == true)
             {
-                // MessageBox.Show("Login Succesfully !!");
-                CustomerFrom home = new CustomerFrom();
-                home.Tag = this;
-                home.Show(this);
-                home.StartPosition = FormStartPosition.Manual;
-                home.Location = this.Location;
-                this.Hide();
+                goToDriverHome();
+                return;
             }
-            else
+
+            OracleDataReader dr3 = cmd.ExecuteReader();
+            dr3 = cmd3.ExecuteReader();
+            if (dr3.Read())
             {
-                MessageBox.Show("Login faild !! ");
+                exist = true;
             }
+            dr3.Close();
+            if (exist == true)
+            {
+                goToAdminHome();
+                return;
+            }
+
+            MessageBox.Show("Login faild !! ");
+            
             #endregion
         }
 
