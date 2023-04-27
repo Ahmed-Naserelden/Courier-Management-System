@@ -1,14 +1,14 @@
-﻿using Courier_Management_System.Models;
-using Oracle.DataAccess.Client;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 using System.Windows.Forms;
+using System.ComponentModel;
+using System.Threading.Tasks;
+using Oracle.DataAccess.Client;
+using System.Collections.Generic;
+using Courier_Management_System.Models;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -16,9 +16,9 @@ namespace Courier_Management_System
 {
     public partial class CustomerFrom : Form
     {
-        DataSet ds, ds2;
-        OracleDataAdapter adapter, adapter2;
-        OracleCommandBuilder builder, builder2;
+        DataSet ds;
+        OracleDataAdapter adapter;
+        OracleCommandBuilder builder;
         string ordb = "Data Source=ORCL; User Id= scott; Password=tiger;";
 
         public CustomerFrom()
@@ -28,10 +28,10 @@ namespace Courier_Management_System
 
         private void HomeForm_Load(object sender, EventArgs e)
         {
-            label1.Text = AccountInfo.user.Name;
+            label1.Text = CustomerAccountInfo.user.Name;
             string cmdstr = "select DELIVERY_ID, C_EMAIL, SOURCE_ADDRESS, DESTINATOIN_ADDRESS, PAKAGE_SIZE from deliveries where c_email =:email";
             adapter = new OracleDataAdapter(cmdstr, ordb);
-            adapter.SelectCommand.Parameters.Add("email", AccountInfo.user.Email);
+            adapter.SelectCommand.Parameters.Add("email", CustomerAccountInfo.user.Email);
             ds = new DataSet();
             adapter.Fill(ds);
             dataGridView1.DataSource= ds.Tables[0];

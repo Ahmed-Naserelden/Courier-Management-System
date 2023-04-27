@@ -140,12 +140,9 @@ namespace Courier_Management_System
             cmd3.Parameters.Add("password", passwordtext);
 
 
-
-
-
             string name = "", phone = "", creditCard = "", address = "";
             bool exist = false;
-            int whereIs = -1;
+            
 
             OracleDataReader dr = cmd.ExecuteReader();
             if (dr.Read())
@@ -154,12 +151,12 @@ namespace Courier_Management_System
                 creditCard = dr[1].ToString();
                 phone = dr[4].ToString();
                 address = dr[5].ToString();
-                AccountInfo.user.Name = name;
-                AccountInfo.user.Phone = phone;
-                AccountInfo.user.Address = address;
-                AccountInfo.user.CreditCard = creditCard;
-                AccountInfo.user.Password = passwordtext;
-                AccountInfo.user.Email= emailtext;
+                CustomerAccountInfo.user.Name = name;
+                CustomerAccountInfo.user.Phone = phone;
+                CustomerAccountInfo.user.Address = address;
+                CustomerAccountInfo.user.CreditCard = creditCard;
+                CustomerAccountInfo.user.Password = passwordtext;
+                CustomerAccountInfo.user.Email= emailtext;
                 exist = true;
             }
             dr.Close();

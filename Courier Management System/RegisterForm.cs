@@ -50,6 +50,15 @@ namespace Courier_Management_System
             this.Hide();
         }
 
+        void goToLogin()
+        {
+            LoginForm home = new LoginForm();
+            home.Tag = this;
+            home.Show(this);
+            home.StartPosition = FormStartPosition.Manual;
+            home.Location = this.Location;
+            this.Hide();
+        }
         private void Register_button_Click(object sender, EventArgs e)
         {
             OracleCommand cmd = new OracleCommand();
@@ -108,12 +117,7 @@ namespace Courier_Management_System
                     if (r != -1)
                     {
                         // MessageBox.Show("Wellcome :) You Now Have an Account :)");
-                        CustomerFrom home = new CustomerFrom();
-                        home.Tag = this;
-                        home.Show(this);
-                        home.StartPosition = FormStartPosition.Manual;
-                        home.Location = this.Location;
-                        this.Hide();
+                        goToLogin();
                     }
                 }
                 catch {

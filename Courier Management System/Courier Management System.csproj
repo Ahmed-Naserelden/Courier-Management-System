@@ -75,7 +75,15 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountInfo.cs" />
+    <Compile Include="MakeOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MakeOrderForm.Designer.cs">
+      <DependentUpon>MakeOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdminAccountInfo.cs" />
+    <Compile Include="Models\CustomerAccountInfo.cs" />
+    <Compile Include="Models\DriverAccountInfo.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
@@ -94,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MakeOrderForm.resx">
+      <DependentUpon>MakeOrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

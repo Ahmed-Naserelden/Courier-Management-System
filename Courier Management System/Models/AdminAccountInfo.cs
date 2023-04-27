@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Courier_Management_System.Models
 {
-    internal class AccountInfo
+    internal class AdminAccountInfo
     {
-        public static User user { get; set; } = new User();
-        
 
     }
 }
