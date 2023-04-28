@@ -10,10 +10,11 @@ using System.Windows.Forms;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
 using Courier_Management_System.Models;
+
 namespace Courier_Management_System
 {
     public partial class DriverForm : Form
-    { 
+    {
         string ordb = "Data Source = ORCL;  User Id = scott; Password = tiger;";
         OracleConnection conn;
 
@@ -21,6 +22,7 @@ namespace Courier_Management_System
         {
             InitializeComponent();
         }
+
 
         private void goToLoginForm()
         {
@@ -42,6 +44,7 @@ namespace Courier_Management_System
 
             cmd.Parameters.Add("row", OracleDbType.RefCursor, ParameterDirection.Output);
 
+
             OracleDataReader dr = cmd.ExecuteReader();
             DataTable dt = new DataTable();
             dt.Load(dr);
@@ -50,24 +53,26 @@ namespace Courier_Management_System
 
         private void ViewAccountInfo_click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void ResignationRequest_click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Confirm resignation request:", "Delete row", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
+                
                 OracleCommand c = new OracleCommand();
                 c.Connection = conn;
 
                 c.CommandText = "Delete from Drivers where D_EMAIL=:e";
                 c.Parameters.Add("e", LoginForm.current_user);
+
                 int r = c.ExecuteNonQuery();
                 if (r != -1)
                 {
                     MessageBox.Show("Actor deleted");
                     goToLoginForm();
-                   
+
                 }
             }
         }
@@ -79,12 +84,12 @@ namespace Courier_Management_System
             conn.Open();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

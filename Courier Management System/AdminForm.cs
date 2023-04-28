@@ -69,8 +69,10 @@ namespace Courier_Management_System
             //dr.Close();
         }
 
+
         private void viewDriver_Click(object sender, EventArgs e)
         {
+
             OracleCommand cmd = new OracleCommand();
             cmd.Connection = conn;
 
@@ -91,6 +93,8 @@ namespace Courier_Management_System
         {
             conn = new OracleConnection(ordb);
             conn.Open();
+            label1.Text = LoginForm.current_user;
+
 
         }
 
@@ -109,6 +113,10 @@ namespace Courier_Management_System
             dt.Load(dr);
             dataGridView1.DataSource = dt;
 
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
         }
     }
 }

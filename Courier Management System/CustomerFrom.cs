@@ -18,7 +18,7 @@ namespace Courier_Management_System
     {
         DataSet ds;
         OracleDataAdapter adapter;
-        OracleCommandBuilder builder;  
+        OracleCommandBuilder builder;
         string ordb = "Data Source=ORCL; User Id= scott; Password=tiger;";
 
         public CustomerFrom()
@@ -26,27 +26,34 @@ namespace Courier_Management_System
             InitializeComponent();
         }
 
-
+        void goToMakeOrderForm()
+        {
+            MakeOrderForm home = new MakeOrderForm();
+            home.Tag = this;
+            home.Show(this);
+            home.StartPosition = FormStartPosition.Manual;
+            home.Location = this.Location;
+            this.Hide();
+        }
         private void HomeForm_Load(object sender, EventArgs e)
         {
-            label1.Text = CustomerAccountInfo.user.Email;
-            label3.Text = CustomerAccountInfo.user.Name;
-            string cmdstr = "select DELIVERY_ID, C_EMAIL, SOURCE_ADDRESS, DESTINATOIN_ADDRESS, PAKAGE_SIZE from deliveries where c_email =:email";
-            adapter = new OracleDataAdapter(cmdstr, ordb);
-            adapter.SelectCommand.Parameters.Add("email", CustomerAccountInfo.user.Email);
-            ds = new DataSet();
-            adapter.Fill(ds);
-            dataGridView1.DataSource= ds.Tables[0];
+            label1.Text = CustomerAccountInfo.user.Name;
+            //string cmdstr = "select DELIVERY_ID, C_EMAIL, SOURCE_ADDRESS, DESTINATOIN_ADDRESS, PAKAGE_SIZE from deliveries where c_email =:email";
+            //adapter = new OracleDataAdapter(cmdstr, ordb);
+            //adapter.SelectCommand.Parameters.Add("email", CustomerAccountInfo.user.Email);
+            //ds = new DataSet();
+            //adapter.Fill(ds);
+            //dataGridView1.DataSource= ds.Tables[0];
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            builder = new OracleCommandBuilder(adapter);
-           // builder2 = new OracleCommandBuilder(adapter2);
+            //builder = new OracleCommandBuilder(adapter);
+            //// builder2 = new OracleCommandBuilder(adapter2);
 
-            adapter.Update(ds.Tables[0]);
-            //adapter2.Update(ds2.Tables[0]);
+            //adapter.Update(ds.Tables[0]);
+            ////adapter2.Update(ds2.Tables[0]);
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -57,7 +64,7 @@ namespace Courier_Management_System
             //    if (dataGridView1.SelectedRows.Count > 1) 
             //        break;
 
-                
+
             //    string delvID = row.Cells[0].Value.ToString();
             //    string cmdstr = "SELECT D_EMAIL, DESTINATOIN_ADDRESS, SOURCE_ADDRESS, PAKAGE_SIZE, STATUS, PROCESSDATE from deliveries where DELIVERY_ID =:ID";
 
@@ -68,7 +75,7 @@ namespace Courier_Management_System
             //    adapter.Fill(ds2);
 
             //    dataGridView2.DataSource = ds2.Tables[0];
-                
+
             //}
 
         }
@@ -78,14 +85,36 @@ namespace Courier_Management_System
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void WriteAcomplaint_click(object sender, EventArgs e)
         {
 
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void Book_Arequest_click(object sender, EventArgs e)
         {
+            goToMakeOrderForm();
 
+
+        }
+
+        private void ViewMyOrders_click(object sender, EventArgs e)
+        {
+            string cmdstr = "select C_EMAIL, SOURCE_ADDRESS, DESTINATOIN_ADDRESS, PAKAGE_SIZE from deliveries where c_email =:email";
+            adapter = new OracleDataAdapter(cmdstr, ordb);
+            adapter.SelectCommand.Parameters.Add("email", CustomerAccountInfo.user.Email);
+            ds = new DataSet();
+            adapter.Fill(ds);
+            dataGridView1.DataSource = ds.Tables[0];
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            builder = new OracleCommandBuilder(adapter);
+            // builder2 = new OracleCommandBuilder(adapter2);
+
+
+            adapter.Update(ds.Tables[0]);
+            //adapter2.Update(ds2.Tables[0]);
         }
     }
 
