@@ -69,10 +69,8 @@ namespace Courier_Management_System
             //dr.Close();
         }
 
-
         private void viewDriver_Click(object sender, EventArgs e)
         {
-
             OracleCommand cmd = new OracleCommand();
             cmd.Connection = conn;
 

@@ -18,7 +18,7 @@ namespace Courier_Management_System
     {
         DataSet ds;
         OracleDataAdapter adapter;
-        OracleCommandBuilder builder;
+        OracleCommandBuilder builder;  
         string ordb = "Data Source=ORCL; User Id= scott; Password=tiger;";
 
         public CustomerFrom()
@@ -26,9 +26,11 @@ namespace Courier_Management_System
             InitializeComponent();
         }
 
+
         private void HomeForm_Load(object sender, EventArgs e)
         {
-            label1.Text = CustomerAccountInfo.user.Name;
+            label1.Text = CustomerAccountInfo.user.Email;
+            label3.Text = CustomerAccountInfo.user.Name;
             string cmdstr = "select DELIVERY_ID, C_EMAIL, SOURCE_ADDRESS, DESTINATOIN_ADDRESS, PAKAGE_SIZE from deliveries where c_email =:email";
             adapter = new OracleDataAdapter(cmdstr, ordb);
             adapter.SelectCommand.Parameters.Add("email", CustomerAccountInfo.user.Email);
@@ -68,6 +70,21 @@ namespace Courier_Management_System
             //    dataGridView2.DataSource = ds2.Tables[0];
                 
             //}
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
 
         }
     }

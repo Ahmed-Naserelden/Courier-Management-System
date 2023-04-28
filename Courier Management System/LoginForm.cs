@@ -15,9 +15,9 @@ using Oracle.DataAccess.Types;
 
 namespace Courier_Management_System
 {
-
     public partial class LoginForm : Form
     {
+        public static string current_user = "";
         
         OracleConnection conn;
         string ordb = "Data Source=ORCL;User Id=scott;Password=tiger;";
@@ -138,7 +138,7 @@ namespace Courier_Management_System
             cmd3.CommandType = CommandType.Text;
             cmd3.Parameters.Add("email", emailtext);
             cmd3.Parameters.Add("password", passwordtext);
-
+            current_user = emailtext;
 
             string name = "", phone = "", creditCard = "", address = "";
             bool exist = false;
@@ -205,6 +205,16 @@ namespace Courier_Management_System
             register.Location = this.Location;
             register.Show(this);
             this.Hide();
+        }
+
+        private void email_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
