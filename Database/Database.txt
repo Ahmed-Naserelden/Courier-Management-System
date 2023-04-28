@@ -13,6 +13,15 @@ CREATE TABLE deliveries(
 --  FOREIGN KEY (d_email) REFERENCES drivers(d_email)
 );
 
+CREATE TABLE COMPLAINS(
+  complaint varchar2(255), 
+  order_id integer ,
+  complaint_cat VARCHAR2(20) CHECK(complaint_cat IN ('arrival_time','driver_behaviour','cost') ), 
+  c_email varchar2(255),
+  --user_name varchar2(255) FOREIGN KEY REFERENCES customers(c_name)
+  FOREIGN KEY (c_email) REFERENCES customers(c_email)
+);
+
 CREATE TABLE customers(
   c_name varchar2(255),
   c_creditcard_num varchar2(255),

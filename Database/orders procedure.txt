@@ -1,7 +1,0 @@
-create or replace PROCEDURE viewOrdersInfo
-(ordersInfo out sys_refcursor)
-as
-begin
-    open ordersInfo for
-      select * from deliveries  ;
-end ;

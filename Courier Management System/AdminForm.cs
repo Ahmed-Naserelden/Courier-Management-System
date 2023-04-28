@@ -94,8 +94,6 @@ namespace Courier_Management_System
             conn = new OracleConnection(ordb);
             conn.Open();
 
-
-
         }
 
         private void viewOrder_Click(object sender, EventArgs e)
@@ -103,7 +101,7 @@ namespace Courier_Management_System
             OracleCommand cmd = new OracleCommand();
             cmd.Connection = conn;
 
-            cmd.CommandText = "viewOrdersInfo";
+            cmd.CommandText = "view_all_requests";
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.Add("row", OracleDbType.RefCursor, ParameterDirection.Output);

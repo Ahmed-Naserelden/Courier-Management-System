@@ -8,5 +8,6 @@ namespace Courier_Management_System.Models
 {
     internal class DriverAccountInfo
     {
+        public static User user { get; set; } = new User();
     }
 }

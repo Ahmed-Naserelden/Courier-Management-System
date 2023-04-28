@@ -31,6 +31,7 @@ namespace Courier_Management_System
             MajorcomboBox1.Items.Add("Driver");
             conn = new OracleConnection(ordb);
             conn.Open();
+            
         }
         
         private void register_form_FormClosing(object sender, FormClosingEventArgs e)
@@ -69,6 +70,7 @@ namespace Courier_Management_System
             user.Email = Email_textbox.Text;
             user.Phone = Phone_textbox.Text;
             user.Password = Password_textbox.Text;
+            
             try
             {
                 user.Major = MajorcomboBox1.SelectedItem.ToString();
@@ -110,6 +112,8 @@ namespace Courier_Management_System
                 cmd.Parameters.Add("c_password", user.Password);
                 cmd.Parameters.Add("c_phone", user.Phone);
                 cmd.Parameters.Add("c_address", user.Address);
+               
+
                 
                 try
                 {

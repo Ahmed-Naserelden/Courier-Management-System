@@ -1,0 +1,8 @@
+create or replace
+PROCEDURE view_all_requests
+(all_orders out sys_refcursor)
+as
+begin
+    open all_orders for
+      select * from deliveries  ;
+end     ;

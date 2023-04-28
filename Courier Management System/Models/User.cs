@@ -16,6 +16,8 @@ namespace Courier_Management_System.Models
         public string CreditCard { get; set; }
         public string Major { get; set; }
         public string Address { get; set; }
+       
+       
         public List<Order> Orders { get; set; } = new List<Order>();
        
     }
