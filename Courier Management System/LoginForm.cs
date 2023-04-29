@@ -94,7 +94,6 @@ namespace Courier_Management_System
 
         private void loginbtn_Click(object sender, EventArgs e)
         {
-
             #region stor
             if(searchInCustomers())
             {
