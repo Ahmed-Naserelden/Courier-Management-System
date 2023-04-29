@@ -42,7 +42,6 @@ namespace Courier_Management_System
             conn = new OracleConnection(ordb);
             OracleCommand cmd = new OracleCommand();
             conn.Open();
-            //CustomerAccountInfo.user.Email = "an2071497@gmail.com";
             textBox1.Text = CustomerAccountInfo.user.Email;
         }
 
@@ -64,8 +63,6 @@ namespace Courier_Management_System
                 string destinationAddress = textBox4.Text;
                 string date = dateTimePicker1.Text;
 
-                //string query = "INSERT INTO DELIVERIES (DELIVERY_ID)" +
-                //    "VALUES (order_id_counter.nextval)";
 
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = conn;

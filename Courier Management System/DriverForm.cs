@@ -51,9 +51,18 @@ namespace Courier_Management_System
             dataGridView2.DataSource = dt;
         }
 
+        private void goToDriverAccountFormForm()
+        {
+            DriverAccountInfoForm home = new DriverAccountInfoForm();
+            home.Tag = this;
+            home.Show(this);
+            home.StartPosition = FormStartPosition.Manual;
+            home.Location = this.Location;
+            this.Hide();
+        }
         private void ViewAccountInfo_click(object sender, EventArgs e)
         {
-            
+            goToDriverAccountFormForm();
         }
 
         private void ResignationRequest_click(object sender, EventArgs e)
@@ -67,12 +76,20 @@ namespace Courier_Management_System
                 c.CommandText = "Delete from Drivers where D_EMAIL=:e";
                 c.Parameters.Add("e", LoginForm.current_user);
 
-                int r = c.ExecuteNonQuery();
-                if (r != -1)
-                {
-                    MessageBox.Show("Actor deleted");
-                    goToLoginForm();
 
+                try
+                {
+                    int r = c.ExecuteNonQuery();
+                    if (r != -1)
+                    {
+                        MessageBox.Show("Actor deleted");
+                        goToLoginForm();
+
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("your Resignation Rejected");
                 }
             }
         }
@@ -84,14 +101,19 @@ namespace Courier_Management_System
             conn.Open();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        void goOut()
         {
-
+            LoginForm home = new LoginForm();
+            home.Tag = this;
+            home.Show(this);
+            home.StartPosition = FormStartPosition.Manual;
+            home.Location = this.Location;
+            this.Hide();
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void label3_Click(object sender, EventArgs e)
         {
-
+            goOut();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using Courier_Management_System.Models;
 using Microsoft.Win32;
 using Oracle.DataAccess.Client;
@@ -29,26 +31,7 @@ namespace Courier_Management_System
             InitializeComponent();
         }
 
-        private int getIcome()
-        {
-            OracleCommand cmd = new OracleCommand();
-            cmd.Connection = conn;
-            cmd.CommandText = "GETGATE";
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("res", OracleDbType.Int32, ParameterDirection.Output);
-            cmd.ExecuteNonQuery();
-            int res;
-            try
-            {
-                res = Convert.ToInt32(cmd.Parameters["res"].Value.ToString());
-                // email.Text = res.ToString();
-            }
-            catch
-            {
-                res = 1;
-            }
-            return res;
-        }
+        
 
         private void getUserOrder(string email)
         {
@@ -101,10 +84,7 @@ namespace Courier_Management_System
         private void Form1_Load(object sender, EventArgs e)
         {
             conn = new OracleConnection(ordb);
-            //user  = new User();
             conn.Open();
-            //email.Text = "admin@a.com";
-            //password.Text = "admin";
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -116,83 +96,17 @@ namespace Courier_Management_System
         {
 
             #region stor
-            OracleCommand cmd = new OracleCommand();
-            OracleCommand cmd2 = new OracleCommand();
-            OracleCommand cmd3 = new OracleCommand();
-            string emailtext = email.Text, passwordtext = password.Text;
-            
-            // cmd
-            cmd.Connection = conn;
-            cmd.CommandText = "select * from customers where c_email=:email and c_password=:password";
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Add("email", emailtext);
-            cmd.Parameters.Add("password", passwordtext);
-
-            //cmd2
-            cmd2.Connection = conn;
-            cmd2.CommandText = "select * from drivers where d_email=:email and d_password=:password";
-            cmd2.CommandType = CommandType.Text;
-            cmd2.Parameters.Add("email", emailtext);
-            cmd2.Parameters.Add("password", passwordtext);
-
-            //cmd3
-            cmd3.Connection = conn;
-            cmd3.CommandText = "select * from admins where email=:email and ADMINPASSWORD=:password";
-            cmd3.CommandType = CommandType.Text;
-            cmd3.Parameters.Add("email", emailtext);
-            cmd3.Parameters.Add("password", passwordtext);
-
-
-
-            string name = "", phone = "", creditCard = "", address = "";
-            bool exist = false;
-            
-
-            OracleDataReader dr = cmd.ExecuteReader();
-            if (dr.Read())
-            {
-                name = dr[0].ToString();
-                creditCard = dr[1].ToString();
-                phone = dr[4].ToString();
-                address = dr[5].ToString();
-                CustomerAccountInfo.user.Name = name;
-                CustomerAccountInfo.user.Phone = phone;
-                CustomerAccountInfo.user.Address = address;
-                CustomerAccountInfo.user.CreditCard = creditCard;
-                CustomerAccountInfo.user.Password = passwordtext;
-                CustomerAccountInfo.user.Email= emailtext;
-                exist = true;
-                current_user = emailtext;
-            }
-            dr.Close();
-            if(exist == true)
+            if(searchInCustomers())
             {
                 goToCustomerHome();
                 return;
             }
-            OracleDataReader dr2 = cmd.ExecuteReader();
-            dr2 = cmd2.ExecuteReader();
-            if (dr2.Read())
-            {
-                current_user = emailtext;
-                exist = true;
-            }
-            dr2.Close();
-            if (exist == true)
+            if (searchInDrivers())
             {
                 goToDriverHome();
                 return;
             }
-
-            OracleDataReader dr3 = cmd.ExecuteReader();
-            dr3 = cmd3.ExecuteReader();
-            if (dr3.Read())
-            {
-                exist = true;
-                current_user = emailtext;
-            }
-            dr3.Close();
-            if (exist == true)
+            if (searchInAdmins())
             {
                 goToAdminHome();
                 return;
@@ -213,14 +127,87 @@ namespace Courier_Management_System
             this.Hide();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private bool searchInCustomers()
         {
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "select * from customers where c_email=:email and c_password=:password";
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.Add("email", email.Text);
+            cmd.Parameters.Add("password", password.Text);
+            OracleDataReader dr = cmd.ExecuteReader();
 
+            bool flage = false;
+            if (dr.Read())
+            {
+
+                CustomerAccountInfo.user.Password = password.Text;
+                CustomerAccountInfo.user.Email = email.Text;
+
+                CustomerAccountInfo.user.Name = dr[0].ToString(); ;
+                CustomerAccountInfo.user.Phone = dr[4].ToString(); ;
+                CustomerAccountInfo.user.Address = dr[5].ToString();
+                CustomerAccountInfo.user.CreditCard = dr[1].ToString(); ;
+
+                current_user = email.Text;
+                flage = true;
+            }
+            dr.Close();
+            return flage;
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private bool searchInDrivers()
         {
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "select * from drivers where d_email=:email and d_password=:password";
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.Add("email", email.Text);
+            cmd.Parameters.Add("password", password.Text);
+            
+            OracleDataReader dr = cmd.ExecuteReader();
 
+            bool flage = false;
+            if (dr.Read())
+            {
+                DriverAccountInfo.user.Password = password.Text;
+                DriverAccountInfo.user.Email = email.Text;
+
+                DriverAccountInfo.user.Name = dr[0].ToString(); ;
+                DriverAccountInfo.user.Phone = dr[4].ToString(); ;
+                DriverAccountInfo.user.Address = dr[5].ToString();
+                DriverAccountInfo.user.CreditCard = dr[1].ToString(); ;
+                DriverAccountInfo.user.Password = password.Text;
+                DriverAccountInfo.user.Email = email.Text;
+
+                current_user = email.Text;
+                flage = true;
+            }
+            dr.Close();
+            return flage;
+        }
+
+        private bool searchInAdmins()
+        {
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "select * from admins where EMAIL=:email and ADMINPASSWORD=:password";
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.Add("email", email.Text);
+            cmd.Parameters.Add("password", password.Text);
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            bool flage = false;
+            if (dr.Read())
+            {
+                AdminAccountInfo.user.Password = password.Text;
+                AdminAccountInfo.user.Email = email.Text;
+
+                current_user = email.Text;
+                flage = true;
+            }
+            dr.Close();
+            return flage;
         }
     }
 }

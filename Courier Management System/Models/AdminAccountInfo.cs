@@ -8,6 +8,6 @@ namespace Courier_Management_System.Models
 {
     internal class AdminAccountInfo
     {
-
+        public static User user { get; set; } = new User();
     }
 }

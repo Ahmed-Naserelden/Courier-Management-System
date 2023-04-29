@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Courier_Management_System</RootNamespace>
     <AssemblyName>Courier Management System</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -51,11 +51,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountForm.Designer.cs">
+      <DependentUpon>AccountForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ComplainmentsMonitoringForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComplainmentsMonitoringForm.Designer.cs">
+      <DependentUpon>ComplainmentsMonitoringForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DriverAccountInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DriverAccountInfoForm.Designer.cs">
+      <DependentUpon>DriverAccountInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MakeComplainmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MakeComplainmentForm.Designer.cs">
+      <DependentUpon>MakeComplainmentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomerFrom.cs">
       <SubType>Form</SubType>
@@ -94,8 +118,20 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AccountForm.resx">
+      <DependentUpon>AccountForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComplainmentsMonitoringForm.resx">
+      <DependentUpon>ComplainmentsMonitoringForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DriverAccountInfoForm.resx">
+      <DependentUpon>DriverAccountInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MakeComplainmentForm.resx">
+      <DependentUpon>MakeComplainmentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomerFrom.resx">
       <DependentUpon>CustomerFrom.cs</DependentUpon>

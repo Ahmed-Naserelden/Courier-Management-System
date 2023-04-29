@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Courier_Management_System.Models;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
 namespace Courier_Management_System
@@ -21,34 +22,11 @@ namespace Courier_Management_System
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ViewCustomers_Click(object sender, EventArgs e)
         {
+            updatebtn.Visible = false;
+            search.Visible = false;
+
             OracleCommand cmd = new OracleCommand();
             cmd.Connection = conn;
 
@@ -62,16 +40,13 @@ namespace Courier_Management_System
             DataTable dt = new DataTable();
             dt.Load(dr);
             dataGridView1.DataSource = dt;
-            //while (dr.Read())
-            //{
-            //  dr[0]
-            //}
-            //dr.Close();
         }
 
 
         private void viewDriver_Click(object sender, EventArgs e)
         {
+            updatebtn.Visible = false;
+            search.Visible = false;
 
             OracleCommand cmd = new OracleCommand();
             cmd.Connection = conn;
@@ -95,11 +70,12 @@ namespace Courier_Management_System
             conn.Open();
             label1.Text = LoginForm.current_user;
 
-
         }
 
         private void viewOrder_Click(object sender, EventArgs e)
         {
+            updatebtn.Visible = false;
+            search.Visible = false;
             OracleCommand cmd = new OracleCommand();
             cmd.Connection = conn;
 
@@ -114,9 +90,65 @@ namespace Courier_Management_System
             dataGridView1.DataSource = dt;
 
         }
+        DataSet ds;
+        OracleDataAdapter adapter;
+        OracleCommandBuilder builder;
 
-        private void label1_Click_1(object sender, EventArgs e)
+        private void complainmentsBtn_Click(object sender, EventArgs e)
         {
+            updatebtn.Visible = true;
+            search.Visible = true;
+
+            #region select multirows
+            /*
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = conn;
+
+            cmd.CommandText = "SELECT * FROM COMPLAINMENTS WHERE status =:stat";
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.Add("stat", "0");
+
+            OracleDataReader dr = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(dr);
+            dataGridView1.DataSource = dt;
+            */
+            #endregion
+            
+            //*****************************************
+            string cmdstr = "SELECT * FROM COMPLAINMENTS WHERE status =:stat";
+            adapter = new OracleDataAdapter(cmdstr, ordb);
+            adapter.SelectCommand.Parameters.Add("status", "0");
+            ds = new DataSet();
+            adapter.Fill(ds);
+            dataGridView1.DataSource = ds.Tables[0];
+            // *****************************************/
+
+        }
+
+
+        private void updatebtn_Click(object sender, EventArgs e)
+        {
+            builder = new OracleCommandBuilder(adapter);
+            adapter.Update(ds.Tables[0]);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string cmdstr = "SELECT * FROM COMPLAINMENTS WHERE CUSTOMER_EMAIL =:email";
+            adapter = new OracleDataAdapter(cmdstr, ordb);
+            //adapter.SelectCommand.Parameters.Add("status", "0");
+            adapter.SelectCommand.Parameters.Add("email", search.Text);
+
+
+            ds = new DataSet();
+            adapter.Fill(ds);
+            dataGridView1.DataSource = ds.Tables[0];
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

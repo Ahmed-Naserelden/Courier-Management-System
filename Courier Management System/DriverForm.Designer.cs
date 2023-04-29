@@ -35,6 +35,7 @@ namespace Courier_Management_System
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,7 +101,6 @@ namespace Courier_Management_System
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.Size = new System.Drawing.Size(776, 297);
             this.dataGridView2.TabIndex = 4;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // label2
             // 
@@ -111,7 +111,17 @@ namespace Courier_Management_System
             this.label2.Size = new System.Drawing.Size(218, 23);
             this.label2.TabIndex = 5;
             this.label2.Text = "label2";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("MV Boli", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(14, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 22);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Logout";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // DriverForm
             // 
@@ -119,6 +129,7 @@ namespace Courier_Management_System
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.button3);
@@ -142,5 +153,6 @@ namespace Courier_Management_System
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
