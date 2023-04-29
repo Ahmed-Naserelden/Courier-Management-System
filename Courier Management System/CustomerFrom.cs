@@ -94,7 +94,6 @@ namespace Courier_Management_System
         {
             goToMakeOrderForm();
 
-
         }
 
         private void ViewMyOrders_click(object sender, EventArgs e)

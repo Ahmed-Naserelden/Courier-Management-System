@@ -118,5 +118,19 @@ namespace Courier_Management_System
         private void label1_Click_1(object sender, EventArgs e)
         {
         }
+
+        private void report1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form1 f = new Form1();
+            f.Show();
+            this.Hide();
+        }
+
+        private void report2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2 f = new Form2();
+            f.Show();
+            this.Hide();
+        }
     }
 }
