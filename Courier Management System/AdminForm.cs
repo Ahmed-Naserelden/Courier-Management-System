@@ -99,30 +99,14 @@ namespace Courier_Management_System
             updatebtn.Visible = true;
             search.Visible = true;
 
-            #region select multirows
-            /*
-            OracleCommand cmd = new OracleCommand();
-            cmd.Connection = conn;
-
-            cmd.CommandText = "SELECT * FROM COMPLAINMENTS WHERE status =:stat";
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Add("stat", "0");
-
-            OracleDataReader dr = cmd.ExecuteReader();
-            DataTable dt = new DataTable();
-            dt.Load(dr);
-            dataGridView1.DataSource = dt;
-            */
-            #endregion
             
-            //*****************************************
             string cmdstr = "SELECT * FROM COMPLAINMENTS WHERE status =:stat";
             adapter = new OracleDataAdapter(cmdstr, ordb);
             adapter.SelectCommand.Parameters.Add("status", "0");
             ds = new DataSet();
             adapter.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
-            // *****************************************/
+
 
         }
 
@@ -137,10 +121,7 @@ namespace Courier_Management_System
         {
             string cmdstr = "SELECT * FROM COMPLAINMENTS WHERE CUSTOMER_EMAIL =:email";
             adapter = new OracleDataAdapter(cmdstr, ordb);
-            //adapter.SelectCommand.Parameters.Add("status", "0");
             adapter.SelectCommand.Parameters.Add("email", search.Text);
-
-
             ds = new DataSet();
             adapter.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];

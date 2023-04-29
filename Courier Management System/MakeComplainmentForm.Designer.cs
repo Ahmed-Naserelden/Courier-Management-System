@@ -145,7 +145,7 @@
             this.showcomplBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.showcomplBtn.Font = new System.Drawing.Font("Mongolian Baiti", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.showcomplBtn.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.showcomplBtn.Location = new System.Drawing.Point(123, 391);
+            this.showcomplBtn.Location = new System.Drawing.Point(120, 391);
             this.showcomplBtn.Name = "showcomplBtn";
             this.showcomplBtn.Size = new System.Drawing.Size(276, 47);
             this.showcomplBtn.TabIndex = 13;
