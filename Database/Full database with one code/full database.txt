@@ -1,0 +1,281 @@
+CREATE TABLE "SCOTT"."CUSTOMERS" 
+   (	"C_NAME" VARCHAR2(255 BYTE), 
+	"C_CREDITCARD_NUM" VARCHAR2(255 BYTE), 
+	"C_EMAIL" VARCHAR2(255 BYTE), 
+	"C_PASSWORD" VARCHAR2(254 BYTE), 
+	"C_PHONE" VARCHAR2(254 BYTE), 
+	"C_ADDRESS" VARCHAR2(255 BYTE), 
+	 PRIMARY KEY ("C_EMAIL")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+
+
+CREATE TABLE "SCOTT"."ADMINS" 
+   (	"EMAIL" VARCHAR2(255 BYTE) NOT NULL ENABLE, 
+	"ADMINPASSWORD" VARCHAR2(254 BYTE), 
+	 PRIMARY KEY ("EMAIL")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+
+
+CREATE TABLE "SCOTT"."COMPLAINS" 
+   (	"ORDER_ID" VARCHAR2(255 BYTE) NOT NULL ENABLE, 
+	"C_EMAIL" VARCHAR2(255 BYTE) NOT NULL ENABLE, 
+	"COMPLAINT_CAT" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
+	"TITLE" VARCHAR2(255 BYTE) NOT NULL ENABLE, 
+	"COMPLAINT" VARCHAR2(255 BYTE) NOT NULL ENABLE, 
+	"STATUS" NUMBER, 
+	 FOREIGN KEY ("C_EMAIL")
+	  REFERENCES "SCOTT"."CUSTOMERS" ("C_EMAIL") ENABLE
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+
+ALTER TABLE complains
+ADD PRIMARY KEY (order_id, c_email);
+
+CREATE TABLE "SCOTT"."DELIVERIES" 
+   (	"DELIVERY_ID" VARCHAR2(255 BYTE) NOT NULL ENABLE, 
+	"C_EMAIL" VARCHAR2(255 BYTE), 
+	"D_EMAIL" VARCHAR2(255 BYTE), 
+	"DESTINATOIN_ADDRESS" VARCHAR2(255 BYTE), 
+	"SOURCE_ADDRESS" VARCHAR2(255 BYTE), 
+	"PAKAGE_SIZE" NUMBER(*,0), 
+	"STATUS" VARCHAR2(255 BYTE), 
+	"PROCESSDATE" DATE, 
+	 PRIMARY KEY ("DELIVERY_ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+
+CREATE TABLE "SCOTT"."DRIVERS" 
+   (	"D_NAME" VARCHAR2(255 BYTE), 
+	"D_CREDITCARD_NUM" VARCHAR2(255 BYTE), 
+	"D_EMAIL" VARCHAR2(255 BYTE), 
+	"D_PASSWORD" VARCHAR2(254 BYTE), 
+	"D_PHONE" VARCHAR2(254 BYTE), 
+	"D_ADDRESS" VARCHAR2(255 BYTE), 
+	 PRIMARY KEY ("D_EMAIL")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+
+
+create or replace PROCEDURE view_all_requests
+(all_orders out sys_refcursor)
+as
+begin
+    open all_orders for
+      select * from deliveries  ;
+end     ;
+
+
+create or replace PROCEDURE viewCustInfo
+(custInfo out sys_refcursor)
+as
+begin
+    open custInfo for
+      select * from customers  ;
+end ;
+
+
+
+
+
+
+create or replace
+PROCEDURE Delete_Driver_Row
+(d_email IN VARCHAR2)
+AS
+BEGIN
+DELETE  FROM  drivers WHERE D_EMAIL=d_email ;
+ END;
+
+
+create or replace
+PROCEDURE GETUSERACTIVITIES
+(
+  customer_email IN VARCHAR2,
+  customerOrders OUT NUMBER,
+  customerComplainments OUT NUMBER,
+  CusomerOrderTotalSizeSummation OUT NUMBER
+)
+AS
+BEGIN
+  SELECT Count(c_email), SUM(deliveries.pakage_size) INTO customerOrders, CusomerOrderTotalSizeSummation
+  From deliveries
+  Where deliveries.c_email = customer_email;
+  
+  SELECT Count(complains.c_email)INTO customerComplainments
+  From complains
+  WHERE complains.c_email = customer_email;
+  
+END;
+
+
+create or replace PROCEDURE customer_orders
+(
+customer_id IN VARCHAR2, 
+orders OUT sys_refcursor
+)
+AS 
+BEGIN
+  OPEN orders FOR
+  SELECT *
+  FROM deliveries
+  WHERE deliveries.C_EMAIL = customer_id;
+END;
+
+
+create or replace PROCEDURE viewOrdersInfo
+(ordersInfo out sys_refcursor)
+as
+begin
+    open ordersInfo for
+      select * from deliveries  ;
+end ;
+
+
+
+--INSERT ADMIN
+INSERT INTO admins(email, adminpassword)
+VALUES ( 'admin@a.com', 'admin' )
+
+
+--INSERT CUSTOMERS
+INSERT INTO customers (c_email, c_name, c_creditcard_num, c_password , c_phone , c_address)
+VALUES ('menna@gmail.com' , 'Menna Ahmed', '3742454554001264'	, 'Menna' ,'01043354492', 'Shorouq' );
+
+INSERT INTO customers (c_name , c_creditcard_num , c_email , c_password , c_phone , c_address)
+VALUES ('Yasser Mohamed' , '6000123478651002', 'yasser12@gmail.com'	, 'Yasser' ,'01568891109', 'October' );
+
+INSERT INTO customers (c_name , c_creditcard_num , c_email , c_password , c_phone , c_address)
+VALUES ('Amr Ahmed' , '3564243510098978', 'amr2001@gmail.com'	, 'Amr' ,'01567541000', 'Maadi' );
+
+INSERT INTO customers (c_name , c_creditcard_num , c_email , c_password , c_phone , c_address)
+VALUES ('Abdulrahman Magdy' , '6000123457571200', 'am2003@gmail.com'	, 'Abdo' ,'01143363333', 'Dokki' );
+
+INSERT INTO customers (c_name , c_creditcard_num , c_email , c_password , c_phone , c_address)
+VALUES ('Aya Abdelhaq' , '2323100945451234', 'aya@gmail.com'	, 'Aya' ,'01022757240', 'Nasr city' );
+
+INSERT INTO customers (c_name , c_creditcard_num , c_email , c_password , c_phone , c_address)
+VALUES ('Heba Khaled' , '7909065720034545', 'heba_ma@gmail.com'	, 'Heba' ,'01090954569', 'Shobra' );
+
+INSERT INTO customers (c_name , c_creditcard_num , c_email , c_password , c_phone , c_address)
+VALUES ('Jana Akram' , '6789123440002001', 'jana@gmail.com'	, 'Jana' ,'01566771000', 'Obour city' );
+
+INSERT INTO customers (c_name , c_creditcard_num , c_email , c_password , c_phone , c_address)
+VALUES ('Hany Tawfiq' , '5000600169001222', 'hanyoff@gmail.com'	, 'Hany' ,'01125579900', 'Nozha city' );
+
+INSERT INTO customers (c_name , c_creditcard_num , c_email , c_password , c_phone , c_address)
+VALUES ('Asaad Mohamed' , '4000123478786958', 'asaad@gmail.com'	, 'Asaad' ,'01092673820', 'Salam city' );
+
+INSERT INTO customers (c_name , c_creditcard_num , c_email , c_password , c_phone , c_address)
+VALUES ('Abdalla Ayman' , '6785111238674545', 'abdallaayman91@gmail.com'	, 'Abdalla' ,'01090923740', 'Obour city ' );
+
+
+--INSERT DRIVERS 
+INSERT INTO drivers(d_name , d_creditcard_num , d_email , d_password , d_phone , d_address)
+VALUES ('abdulrahman Amr' , '1000200030004000', 'abdod1@gmail.com'	, 'Abdo' ,'01143356672', 'helioplis' );
+
+INSERT INTO drivers(d_name , d_creditcard_num , d_email , d_password , d_phone , d_address)
+VALUES ('mohamed Alaa' , '1000922245661000', 'mohamed@gmail.com'	, 'Mohamed' ,'01234456289', 'attaba' );
+
+INSERT INTO drivers(d_name , d_creditcard_num , d_email , d_password , d_phone , d_address)
+VALUES ('kareem mohamed' , '1000489524562000', 'kareem@gmail.com'	, 'kareem' ,'01056977565', 'nasr city' );
+
+INSERT INTO drivers(d_name , d_creditcard_num , d_email , d_password , d_phone , d_address)
+VALUES ('sleem ahmed' , '1000884565428000', 'sleem@gmail.com'	, 'sleem' ,'01153958756', 'shobra' );
+
+INSERT INTO drivers(d_name , d_creditcard_num , d_email , d_password , d_phone , d_address)
+VALUES ('yousef mohamed' , '1000895462697000', 'yousef@gmail.com'	, 'yousef' ,'01006584963', 'hadayk el kobba' );
+
+INSERT INTO drivers(d_name , d_creditcard_num , d_email , d_password , d_phone , d_address)
+VALUES ('baher ashraf' , '1000568956789000', 'baher@gmail.com'	, 'baher' ,'01256587950', 'koleyt el banat' );
+
+INSERT INTO drivers(d_name , d_creditcard_num , d_email , d_password , d_phone , d_address)
+VALUES ('kamel mohamed' , '1000456879955000', 'kamel@gmail.com'	, 'kamel' ,'01115689756', 'fifth settlement' );
+
+INSERT INTO drivers(d_name , d_creditcard_num , d_email , d_password , d_phone , d_address)
+VALUES ('sherif amin' , '1000546578564000', 'sherif@gmail.com'	, 'sherif' ,'01148984553', 'nasr city' );
+
+
+--INSERT DELIVERIES(ORDERS)
+INSERT INTO deliveries(delivery_id , c_email , d_email , destinatoin_address , source_address, pakage_size ,status , processdate)
+Values ('09f-48ff-81b2-5b52051c3b3e' ,'abdallaayman91@gmail.com','abdod1@gmail.com','shobra','obour','30','done','28-APR-23');
+
+INSERT INTO deliveries(delivery_id , c_email , d_email , destinatoin_address , source_address, pakage_size ,status , processdate)
+VALUES('a36-4515-948b-3c3d6692e0ed','menna@gmail.com','mohamed@gmail.com','shobra','obour','12','done','28-APR-23');
+
+INSERT INTO deliveries(delivery_id , c_email , d_email , destinatoin_address , source_address, pakage_size ,status , processdate)
+VALUES ('d3f-48d6-9f8c-bd696ac03c54','abdallaayman91@gmail.com', 'abdod1@gmail.com' ,'attaba','ainshams','65','done' ,'28-APR-23');
+
+INSERT INTO deliveries(delivery_id , c_email , d_email , destinatoin_address , source_address, pakage_size ,status , processdate)
+VALUES('d9b-46b0-9c62-866474d1f0f5','menna@gmail.com','abdod1@gmail.com','Nozha','shobra elkeima' , '23' ,'done','28-APR-23');
+
+INSERT INTO deliveries(delivery_id , c_email , d_email , destinatoin_address , source_address, pakage_size ,status , processdate)
+VALUES ('d9b-46b0-9c62-866474d1a1f5','yasser12@gmail.com','mohamed@gmail.com','tahrir square' ,'obour' , '54' , 'accepted','29-APR-23');
+
+INSERT INTO deliveries(delivery_id , c_email , d_email , destinatoin_address , source_address, pakage_size ,status , processdate)
+VALUES ('d9b-46b0-9c62-866474d1a158','asaad@gmail.com','mohamed@gmail.com', 'october','10th of ramadan' ,'60' , 'accepted' ,'29-APR-23');
+
+INSERT INTO deliveries(delivery_id , c_email , d_email , destinatoin_address , source_address, pakage_size ,status , processdate)
+VALUES('d9b-46b0-9c62-866474d1a160' ,'menna@gmail.com' ,'abdod1@gmail.com' , 'ainshams' ,'attaba' ,'17' ,'accepted' ,'29-APR-23');
+
+INSERT INTO deliveries(delivery_id , c_email , d_email , destinatoin_address , source_address, pakage_size ,status , processdate)
+VALUES('d3f-48d6-9f8c-bd696ac03c67','abdallaayman91@gmail.com','sleem@gmail.com','obour','nozha','25','accepted','29-APR-23');
+
+INSERT INTO deliveries(delivery_id , c_email , d_email , destinatoin_address , source_address, pakage_size ,status , processdate)
+VALUES('d9b-4t60-9c62-866474d1a158','abdallaayman91@gmail.com','','tagamo el kames', 'shobra' ,'45','pending approval','30-APR-23');
+
+INSERT INTO deliveries(delivery_id , c_email , d_email , destinatoin_address , source_address, pakage_size ,status , processdate)
+VALUES('d9b-4t60-9c62-86dd44d1a158','menna@gmail.com','','shorouq city', 'nozha' ,'7','pending approval','30-APR-23');
+
+INSERT INTO deliveries(delivery_id , c_email , d_email , destinatoin_address , source_address, pakage_size ,status , processdate)
+VALUES('d9b-4t60-9c62-866474d1a328','abdallaayman91@gmail.com','','ainshams', 'obour' ,'25','pending approval','30-APR-23');
+
+
+--Insert Complaints
+INSERT INTO complains(complaint, order_id, complaint_cat, c_email, status , title)
+VALUES('order shipped lately' ,'09f-48ff-81b2-5b52051c3b3e','arrival_time','abdallaayman91@gmail.com','1','complaint title');
+
+INSERT INTO complains(complaint, order_id, complaint_cat, c_email, status, title)
+VALUES('high cost of shippment' ,'a36-4515-948b-3c3d6692e0ed','cost','menna@gmail.com','1','complaint title');
+
+INSERT INTO complains(complaint, order_id, complaint_cat, c_email, status, title)
+VALUES ('The driver asked for tips','d3f-48d6-9f8c-bd696ac03c54','driver_behaviour','abdallaayman91@gmail.com','0','complaint title');
+
+INSERT INTO complains(complaint, order_id, complaint_cat, c_email, status, title)
+VALUES ('the driver didnot receive the shipment yet ' ,'d3f-48d6-9f8c-bd696ac03c67','arrival_time','abdallaayman91@gmail.com','1','complaint title');
+
+INSERT INTO complains(complaint, order_id, complaint_cat, c_email, status, title)
+VALUES ('the driver didnot receive the shipment yet ' ,'d9b-46b0-9c62-866474d1a158','arrival_time','asaad@gmail.com','0','complaint title');
+

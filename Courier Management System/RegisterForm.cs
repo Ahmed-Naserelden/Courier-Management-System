@@ -135,5 +135,10 @@ namespace Courier_Management_System
                 MessageBox.Show(":( Some Field Not Valid! :(");
             }
         }
+
+        private void MajorcomboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

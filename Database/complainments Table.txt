@@ -6,3 +6,7 @@ CREATE TABLE complainments(
   status Number,
   FOREIGN KEY (customer_email) REFERENCES customers(c_email)
 );
+
+
+ALTER TABLE complains
+ADD PRIMARY KEY (order_id);

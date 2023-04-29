@@ -100,7 +100,7 @@ namespace Courier_Management_System
             search.Visible = true;
 
             
-            string cmdstr = "SELECT * FROM COMPLAINMENTS WHERE status =:stat";
+            string cmdstr = "SELECT * FROM COMPLAINS WHERE status =:stat";
             adapter = new OracleDataAdapter(cmdstr, ordb);
             adapter.SelectCommand.Parameters.Add("status", "0");
             ds = new DataSet();
@@ -119,7 +119,7 @@ namespace Courier_Management_System
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string cmdstr = "SELECT * FROM COMPLAINMENTS WHERE CUSTOMER_EMAIL =:email";
+            string cmdstr = "SELECT * FROM COMPLAINS WHERE C_EMAIL =:email";
             adapter = new OracleDataAdapter(cmdstr, ordb);
             adapter.SelectCommand.Parameters.Add("email", search.Text);
             ds = new DataSet();

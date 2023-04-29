@@ -28,6 +28,10 @@ namespace Courier_Management_System
             conn = new OracleConnection(ordb);
             conn.Open();
             customerEmail.Text = CustomerAccountInfo.user.Email != null ? CustomerAccountInfo.user.Email : "";
+            orderId.Text = Guid.NewGuid().ToString().Substring(10);
+            comboBox1.Items.Add("cost");
+            comboBox1.Items.Add("driver_behaviour");
+            comboBox1.Items.Add("arrival_time");
         }
 
         private void ComplainmentForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -39,18 +43,19 @@ namespace Courier_Management_System
         {
             OracleCommand cmd = new OracleCommand();
             cmd.Connection = conn;
-            cmd.CommandText = "INSERT INTO complainments VALUES(:id, :email, :title, :description, :status)";
+            cmd.CommandText = "INSERT INTO COMPLAINS VALUES(:id, :email, :cat ,:title, :description, :status)";
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("id", orderId.Text);
             cmd.Parameters.Add("email", customerEmail.Text);
+            cmd.Parameters.Add("cat", comboBox1.SelectedItem.ToString());
             cmd.Parameters.Add("title", complainTitle.Text);
             cmd.Parameters.Add("description", complainDescription.Text);
-            cmd.Parameters.Add("status", 0);
+            cmd.Parameters.Add("status", "0");
 
             int r = cmd.ExecuteNonQuery();
             if(r != -1)
             {
-                MessageBox.Show("Your Complainment Sent Successfully.");
+                MessageBox.Show("Your complaints Sent Successfully.");
             }
             else
             {
@@ -85,6 +90,31 @@ namespace Courier_Management_System
         private void showcomplBtn_Click(object sender, EventArgs e)
         {
             goToMontiring();
+        }
+
+        private void orderId_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

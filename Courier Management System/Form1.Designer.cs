@@ -36,10 +36,9 @@ namespace Courier_Management_System
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(1164, 674);
+            this.button1.Location = new System.Drawing.Point(730, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(191, 48);
+            this.button1.Size = new System.Drawing.Size(119, 48);
             this.button1.TabIndex = 0;
             this.button1.Text = "Report";
             this.button1.UseVisualStyleBackColor = true;
@@ -50,9 +49,9 @@ namespace Courier_Management_System
             this.crystalReportViewer1.ActiveViewIndex = -1;
             this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(12, 81);
+            this.crystalReportViewer1.Location = new System.Drawing.Point(12, 79);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(1343, 587);
+            this.crystalReportViewer1.Size = new System.Drawing.Size(1592, 669);
             this.crystalReportViewer1.TabIndex = 1;
             // 
             // linkLabel1
@@ -60,7 +59,7 @@ namespace Courier_Management_System
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel1.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel1.Location = new System.Drawing.Point(12, 9);
+            this.linkLabel1.Location = new System.Drawing.Point(25, 28);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(82, 25);
             this.linkLabel1.TabIndex = 2;
@@ -72,13 +71,12 @@ namespace Courier_Management_System
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1367, 727);
+            this.ClientSize = new System.Drawing.Size(1616, 760);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.crystalReportViewer1);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

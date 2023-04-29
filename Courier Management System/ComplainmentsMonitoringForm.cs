@@ -58,7 +58,7 @@ namespace Courier_Management_System
             string val = comboBox1.SelectedItem.ToString() == "seen" ? "1" : "0";
             OracleCommand cmd = new OracleCommand();
             cmd.Connection = conn;
-            cmd.CommandText = "SELECT * FROM COMPLAINMENTS WHERE STATUS=: stat";
+            cmd.CommandText = "SELECT * FROM COMPLAINS WHERE STATUS=: stat";
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("stat", val);
 

@@ -56,6 +56,7 @@
             this.updateBtn.TabIndex = 36;
             this.updateBtn.Text = "Update";
             this.updateBtn.UseVisualStyleBackColor = false;
+            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click_1);
             // 
             // emailText
             // 

@@ -39,6 +39,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.backBtn = new System.Windows.Forms.Button();
             this.showcomplBtn = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ComplaineBtn
@@ -61,6 +63,7 @@
             this.orderId.Name = "orderId";
             this.orderId.Size = new System.Drawing.Size(266, 22);
             this.orderId.TabIndex = 1;
+            this.orderId.TextChanged += new System.EventHandler(this.orderId_TextChanged);
             // 
             // customerEmail
             // 
@@ -81,9 +84,9 @@
             // complainDescription
             // 
             this.complainDescription.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.complainDescription.Location = new System.Drawing.Point(123, 195);
+            this.complainDescription.Location = new System.Drawing.Point(120, 196);
             this.complainDescription.Name = "complainDescription";
-            this.complainDescription.Size = new System.Drawing.Size(558, 148);
+            this.complainDescription.Size = new System.Drawing.Size(285, 170);
             this.complainDescription.TabIndex = 4;
             this.complainDescription.Text = "";
             // 
@@ -93,7 +96,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(400, 72);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 16);
+            this.label1.Size = new System.Drawing.Size(53, 17);
             this.label1.TabIndex = 5;
             this.label1.Text = "E-mail";
             // 
@@ -103,7 +106,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(120, 72);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 16);
+            this.label2.Size = new System.Drawing.Size(70, 17);
             this.label2.TabIndex = 6;
             this.label2.Text = "Order ID";
             // 
@@ -113,7 +116,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(120, 123);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 16);
+            this.label3.Size = new System.Drawing.Size(40, 17);
             this.label3.TabIndex = 7;
             this.label3.Text = "Title";
             // 
@@ -123,7 +126,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(120, 176);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 16);
+            this.label4.Size = new System.Drawing.Size(90, 17);
             this.label4.TabIndex = 8;
             this.label4.Text = "Description";
             // 
@@ -153,12 +156,33 @@
             this.showcomplBtn.UseVisualStyleBackColor = false;
             this.showcomplBtn.Click += new System.EventHandler(this.showcomplBtn_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(509, 236);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(173, 24);
+            this.comboBox1.TabIndex = 14;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(509, 196);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(168, 20);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "compliant category";
+            // 
             // MakeComplainmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.showcomplBtn);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.label4);
@@ -192,5 +216,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button backBtn;
         private System.Windows.Forms.Button showcomplBtn;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -47,7 +47,7 @@ namespace Courier_Management_System
             goToDriverFormForm();
         }
 
-        private void updateAccountInfo()
+        /*private void updateAccountInfo()
         {
             OracleCommand cmd = new OracleCommand();
             cmd.Connection = conn;
@@ -79,6 +79,50 @@ namespace Courier_Management_System
             {
                 MessageBox.Show("failed.");
             }
+        }*/
+
+
+        private void updateAccountInfo()
+        {
+
+            DriverAccountInfo.user.Name = nameText.Text;
+            DriverAccountInfo.user.Phone = phoneText.Text;
+            DriverAccountInfo.user.Address = addressText.Text;
+            DriverAccountInfo.user.CreditCard = creditcardText.Text;
+            DriverAccountInfo.user.Password = passwordText.Text;
+
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = conn;
+
+
+            cmd.CommandText = "UPDATE DRIVERS SET D_NAME =:name, D_PHONE =:phone, D_ADDRESS=:address, D_CREDITCARD_NUM =: creditcard, D_password=:password  WHERE D_EMAIL=:email";
+
+
+
+            cmd.Parameters.Add("name", DriverAccountInfo.user.Name);
+            cmd.Parameters.Add("phone", DriverAccountInfo.user.Phone);
+            cmd.Parameters.Add("address", DriverAccountInfo.user.Address);
+            cmd.Parameters.Add("creditcard", DriverAccountInfo.user.CreditCard);
+            cmd.Parameters.Add("password", DriverAccountInfo.user.Password);
+            cmd.Parameters.Add("email", DriverAccountInfo.user.Email);
+
+            int r = cmd.ExecuteNonQuery();
+            try
+            {
+
+                if (r != -1)
+                {
+                    MessageBox.Show("All Is Update.");
+                }
+                else
+                {
+                    MessageBox.Show("failed.");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("some Error.");
+            }
         }
 
         private void updateBtn_Click(object sender, EventArgs e)
@@ -107,6 +151,11 @@ namespace Courier_Management_System
         private void DriverAccountInfoForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             conn.Dispose();
+        }
+
+        private void updateBtn_Click_1(object sender, EventArgs e)
+        {
+            updateAccountInfo();
         }
     }
 }

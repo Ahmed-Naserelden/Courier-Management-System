@@ -12,7 +12,13 @@ namespace Courier_Management_System
 {
     public partial class Form1 : Form
     {
-        CrystalReport1 CR1;
+        CrystalReport3 cr;
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
 
         private void goToAdminHome()
         {
@@ -24,24 +30,21 @@ namespace Courier_Management_System
             this.Hide();
         }
 
-        public Form1()
+
+        private void crystalReportViewer1_Load(object sender, EventArgs e)
         {
-            InitializeComponent();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            crystalReportViewer1.ReportSource = CR1;
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            CR1 = new CrystalReport1() ;
+            cr = new CrystalReport3();
+            crystalReportViewer1.ReportSource = cr;
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            goToAdminHome();
+            goToAdminHome();   
         }
     }
 }
