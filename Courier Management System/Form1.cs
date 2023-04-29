@@ -13,6 +13,17 @@ namespace Courier_Management_System
     public partial class Form1 : Form
     {
         CrystalReport1 CR1;
+
+        private void goToAdminHome()
+        {
+            AdminForm home = new AdminForm();
+            home.Tag = this;
+            home.Show(this);
+            home.StartPosition = FormStartPosition.Manual;
+            home.Location = this.Location;
+            this.Hide();
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -26,6 +37,11 @@ namespace Courier_Management_System
         private void Form1_Load(object sender, EventArgs e)
         {
             CR1 = new CrystalReport1() ;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            goToAdminHome();
         }
     }
 }

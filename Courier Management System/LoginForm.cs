@@ -115,7 +115,7 @@ namespace Courier_Management_System
         private void loginbtn_Click(object sender, EventArgs e)
         {
 
-            #region stor
+            #region loginbtn
             OracleCommand cmd = new OracleCommand();
             OracleCommand cmd2 = new OracleCommand();
             OracleCommand cmd3 = new OracleCommand();

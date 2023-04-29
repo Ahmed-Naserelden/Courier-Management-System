@@ -18,6 +18,17 @@ namespace Courier_Management_System
             InitializeComponent();
         }
 
+
+        private void goToAdminHome()
+        {
+            AdminForm home = new AdminForm();
+            home.Tag = this;
+            home.Show(this);
+            home.StartPosition = FormStartPosition.Manual;
+            home.Location = this.Location;
+            this.Hide();
+        }
+
         private void Form2_Load(object sender, EventArgs e)
         {
             CR2 = new CrystalReport2();
@@ -32,6 +43,16 @@ namespace Courier_Management_System
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            goToAdminHome();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
