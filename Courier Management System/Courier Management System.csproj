@@ -57,22 +57,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountForm.cs">
+    <Compile Include="Forms\AccountForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AccountForm.Designer.cs">
+    <Compile Include="Forms\AccountForm.Designer.cs">
       <DependentUpon>AccountForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminForm.cs">
+    <Compile Include="Forms\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminForm.Designer.cs">
+    <Compile Include="Forms\AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ComplainmentsMonitoringForm.cs">
+    <Compile Include="Forms\ComplainmentsMonitoringForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ComplainmentsMonitoringForm.Designer.cs">
+    <Compile Include="Forms\ComplainmentsMonitoringForm.Designer.cs">
       <DependentUpon>ComplainmentsMonitoringForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CrystalReport3.cs">
@@ -87,10 +87,28 @@
       <DependentUpon>CrystalReport4.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DriverAccountInfoForm.cs">
+    <Compile Include="Forms\CustomerHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DriverAccountInfoForm.Designer.cs">
+    <Compile Include="Forms\CustomerHome.Designer.cs">
+      <DependentUpon>CustomerHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DataGridViewForm%28customer%29.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DataGridViewForm%28customer%29.Designer.cs">
+      <DependentUpon>DataGridViewForm%28customer%29.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DataGridViewForm%28driver%29.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DataGridViewForm%28driver%29.Designer.cs">
+      <DependentUpon>DataGridViewForm%28driver%29.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DriverAccountInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DriverAccountInfoForm.Designer.cs">
       <DependentUpon>DriverAccountInfoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
@@ -105,34 +123,40 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
-    <Compile Include="MakeComplainmentForm.cs">
+    <Compile Include="Forms\DriverHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MakeComplainmentForm.Designer.cs">
+    <Compile Include="Forms\DriverHome.Designer.cs">
+      <DependentUpon>DriverHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MakeComplainmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MakeComplainmentForm.Designer.cs">
       <DependentUpon>MakeComplainmentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomerFrom.cs">
+    <Compile Include="Forms\CustomerFrom.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CustomerFrom.Designer.cs">
+    <Compile Include="Forms\CustomerFrom.Designer.cs">
       <DependentUpon>CustomerFrom.cs</DependentUpon>
     </Compile>
-    <Compile Include="DriverForm.cs">
+    <Compile Include="Forms\DriverForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DriverForm.Designer.cs">
+    <Compile Include="Forms\DriverForm.Designer.cs">
       <DependentUpon>DriverForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm.cs">
+    <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MakeOrderForm.cs">
+    <Compile Include="Forms\MakeOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MakeOrderForm.Designer.cs">
+    <Compile Include="Forms\MakeOrderForm.Designer.cs">
       <DependentUpon>MakeOrderForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\AdminAccountInfo.cs" />
@@ -142,19 +166,26 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegisterForm.cs">
+    <Compile Include="Forms\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegisterForm.Designer.cs">
+    <Compile Include="Forms\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AccountForm.resx">
+    <Compile Include="ThemeColor.cs" />
+    <Compile Include="Forms\WelcomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WelcomeForm.Designer.cs">
+      <DependentUpon>WelcomeForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\AccountForm.resx">
       <DependentUpon>AccountForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminForm.resx">
+    <EmbeddedResource Include="Forms\AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ComplainmentsMonitoringForm.resx">
+    <EmbeddedResource Include="Forms\ComplainmentsMonitoringForm.resx">
       <DependentUpon>ComplainmentsMonitoringForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrystalReport3.rpt">
@@ -165,7 +196,16 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport4.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="DriverAccountInfoForm.resx">
+    <EmbeddedResource Include="Forms\CustomerHome.resx">
+      <DependentUpon>CustomerHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DataGridViewForm%28customer%29.resx">
+      <DependentUpon>DataGridViewForm%28customer%29.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DataGridViewForm%28driver%29.resx">
+      <DependentUpon>DataGridViewForm%28driver%29.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DriverAccountInfoForm.resx">
       <DependentUpon>DriverAccountInfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
@@ -174,19 +214,22 @@
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MakeComplainmentForm.resx">
+    <EmbeddedResource Include="Forms\DriverHome.resx">
+      <DependentUpon>DriverHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MakeComplainmentForm.resx">
       <DependentUpon>MakeComplainmentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CustomerFrom.resx">
+    <EmbeddedResource Include="Forms\CustomerFrom.resx">
       <DependentUpon>CustomerFrom.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DriverForm.resx">
+    <EmbeddedResource Include="Forms\DriverForm.resx">
       <DependentUpon>DriverForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MakeOrderForm.resx">
+    <EmbeddedResource Include="Forms\MakeOrderForm.resx">
       <DependentUpon>MakeOrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -199,8 +242,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RegisterForm.resx">
+    <EmbeddedResource Include="Forms\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WelcomeForm.resx">
+      <DependentUpon>WelcomeForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -218,5 +264,6 @@
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

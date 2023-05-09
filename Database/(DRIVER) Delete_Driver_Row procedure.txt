@@ -1,7 +1,0 @@
-create or replace
-PROCEDURE Delete_Driver_Row
-(d_email IN VARCHAR2)
-AS
-BEGIN
-DELETE  FROM  drivers WHERE D_EMAIL=d_email ;
- END;

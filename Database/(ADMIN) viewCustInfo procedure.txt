@@ -1,8 +1,0 @@
-create or replace
-PROCEDURE viewCustInfo
-(custInfo out sys_refcursor)
-as
-begin
-    open custInfo for
-      select * from customers  ;
-end     ;

@@ -14,8 +14,14 @@ namespace Courier_Management_System
         [STAThread]
         static void Main()
         {
+
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+
+            Application.Run(new WelcomeForm());
+            System.Threading.Thread.Sleep(00);
             Application.Run(new LoginForm());
         }
     }
