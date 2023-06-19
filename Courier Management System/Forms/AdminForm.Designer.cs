@@ -41,10 +41,6 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.view_orders = new System.Windows.Forms.Button();
-            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
-            this.openReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.report1ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.report2ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,7 +49,6 @@
             this.showCrystalReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.admin_panel_menu.SuspendLayout();
-            this.menuStrip2.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
             this.SuspendLayout();
@@ -141,7 +136,6 @@
             this.admin_panel_menu.Controls.Add(this.button4);
             this.admin_panel_menu.Controls.Add(this.label1);
             this.admin_panel_menu.Controls.Add(this.view_orders);
-            this.admin_panel_menu.Controls.Add(this.menuStrip2);
             this.admin_panel_menu.Controls.Add(this.panelLogo);
             this.admin_panel_menu.Dock = System.Windows.Forms.DockStyle.Left;
             this.admin_panel_menu.Location = new System.Drawing.Point(0, 0);
@@ -250,41 +244,6 @@
             this.view_orders.UseVisualStyleBackColor = true;
             this.view_orders.Click += new System.EventHandler(this.viewOrder_Click);
             // 
-            // menuStrip2
-            // 
-            this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openReportsToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(3, 509);
-            this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(125, 28);
-            this.menuStrip2.TabIndex = 9;
-            this.menuStrip2.Text = "menuStrip2";
-            // 
-            // openReportsToolStripMenuItem
-            // 
-            this.openReportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.report1ToolStripMenuItem1,
-            this.report2ToolStripMenuItem1});
-            this.openReportsToolStripMenuItem.Name = "openReportsToolStripMenuItem";
-            this.openReportsToolStripMenuItem.Size = new System.Drawing.Size(117, 24);
-            this.openReportsToolStripMenuItem.Text = "Open reports :";
-            // 
-            // report1ToolStripMenuItem1
-            // 
-            this.report1ToolStripMenuItem1.Name = "report1ToolStripMenuItem1";
-            this.report1ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.report1ToolStripMenuItem1.Text = "Report 1";
-            this.report1ToolStripMenuItem1.Click += new System.EventHandler(this.report1ToolStripMenuItem_Click);
-            // 
-            // report2ToolStripMenuItem1
-            // 
-            this.report2ToolStripMenuItem1.Name = "report2ToolStripMenuItem1";
-            this.report2ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.report2ToolStripMenuItem1.Text = "Report 2";
-            this.report2ToolStripMenuItem1.Click += new System.EventHandler(this.report2ToolStripMenuItem_Click);
-            // 
             // panelLogo
             // 
             this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
@@ -319,33 +278,6 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "ADMIN";
             // 
-            // report1ToolStripMenuItem
-            // 
-            this.report1ToolStripMenuItem.Name = "report1ToolStripMenuItem";
-            this.report1ToolStripMenuItem.Size = new System.Drawing.Size(149, 26);
-            this.report1ToolStripMenuItem.Text = "Report 1";
-            this.report1ToolStripMenuItem.Click += new System.EventHandler(this.report1ToolStripMenuItem_Click);
-            // 
-            // report2ToolStripMenuItem
-            // 
-            this.report2ToolStripMenuItem.Name = "report2ToolStripMenuItem";
-            this.report2ToolStripMenuItem.Size = new System.Drawing.Size(149, 26);
-            this.report2ToolStripMenuItem.Text = "Report 2";
-            this.report2ToolStripMenuItem.Click += new System.EventHandler(this.report2ToolStripMenuItem_Click);
-            // 
-            // showCrystalReportsToolStripMenuItem
-            // 
-            this.showCrystalReportsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(57)))));
-            this.showCrystalReportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.report1ToolStripMenuItem,
-            this.report2ToolStripMenuItem});
-            this.showCrystalReportsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.showCrystalReportsToolStripMenuItem.Name = "showCrystalReportsToolStripMenuItem";
-            this.showCrystalReportsToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
-            this.showCrystalReportsToolStripMenuItem.Size = new System.Drawing.Size(153, 24);
-            this.showCrystalReportsToolStripMenuItem.Text = "Show crystal reports :";
-            this.showCrystalReportsToolStripMenuItem.Click += new System.EventHandler(this.showCrystalReportsToolStripMenuItem_Click);
-            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -363,9 +295,6 @@
             this.Load += new System.EventHandler(this.AdminForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.admin_panel_menu.ResumeLayout(false);
-            this.admin_panel_menu.PerformLayout();
-            this.menuStrip2.ResumeLayout(false);
-            this.menuStrip2.PerformLayout();
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();
             this.panelTitleBar.ResumeLayout(false);
@@ -393,10 +322,6 @@
         private System.Windows.Forms.ToolStripMenuItem report1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem report2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showCrystalReportsToolStripMenuItem;
-        private System.Windows.Forms.MenuStrip menuStrip2;
-        private System.Windows.Forms.ToolStripMenuItem openReportsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem report1ToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem report2ToolStripMenuItem1;
         private System.Windows.Forms.Button button1;
     }
 }

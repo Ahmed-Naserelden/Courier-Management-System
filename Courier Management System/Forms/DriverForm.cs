@@ -147,7 +147,7 @@ namespace Courier_Management_System
         //}
         private void ViewAccountInfo_click(object sender, EventArgs e)
         {
-            //design
+            //design 
             OpenChildForm(new DriverAccountInfoForm(), sender);
             //ActivateButton(sender);
             //-------------
@@ -188,6 +188,11 @@ namespace Courier_Management_System
 
         private void DriverForm_Load(object sender, EventArgs e)
         {
+
+            this.MinimumSize = new Size(1195, 666);
+            this.MaximumSize = new Size(1195, 666);
+
+
             label2.Text = LoginForm.current_user;
             conn = new OracleConnection(ordb);
             conn.Open();
