@@ -3,7 +3,6 @@
 ### Welcome to the courier management system web application! This C# application is designed to manage couriers, and deliveries between customers and drivers and improve efficiency & functionality .
 
 ## ***Features***
----
 
 - ### Admin login: Allows admin to manage the whole system between drivers and customers .
 
