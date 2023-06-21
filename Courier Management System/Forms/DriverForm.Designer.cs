@@ -254,6 +254,7 @@ namespace Courier_Management_System
             this.DesktopPanel.Name = "DesktopPanel";
             this.DesktopPanel.Size = new System.Drawing.Size(721, 474);
             this.DesktopPanel.TabIndex = 18;
+            this.DesktopPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DesktopPanel_Paint);
             // 
             // DriverForm
             // 
@@ -265,7 +266,7 @@ namespace Courier_Management_System
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.admin_panel_menu);
             this.Name = "DriverForm";
-            this.Text = "a";
+            this.Text = "Driver form";
             this.Load += new System.EventHandler(this.DriverForm_Load);
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();

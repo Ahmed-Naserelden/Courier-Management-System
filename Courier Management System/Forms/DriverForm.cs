@@ -234,5 +234,10 @@ namespace Courier_Management_System
         {
             OpenChildForm(new Forms.DriverHome(), sender);
         }
+
+        private void DesktopPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
