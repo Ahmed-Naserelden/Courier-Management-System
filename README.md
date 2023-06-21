@@ -35,7 +35,7 @@
     2. Copy the SQL code found in (Oracle commands.txt) found in Database file .
     3. Run the script (F5)
        ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/3.png "Run script")
-    4. Make sure that all tables are executed.
+    4. Make sure that all tables and procedures are executed.
        ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/4.1.png "Tables")
        ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/4.2.png "Procedures")
     
