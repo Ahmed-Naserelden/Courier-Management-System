@@ -22,7 +22,7 @@
 ### This Project was developed using C# (windows forms) mainly as a programing language and SQL for database .
 
 ## ***Getting started***
----
+
 ### To get started with the courier management system , you will need to set up the application on a local server. Here is a general outline of the steps you will need to follow:
 
 - ### Install SQL developer as the database management system .
