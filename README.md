@@ -18,7 +18,7 @@
 * ### Reporting and analysis: Provides admins with the ability to print reports
 
 ## ***Language used:***
----
+
 ### This Project was developed using C# (windows forms) mainly as a programing language and SQL for database .
 
 ## ***Getting started***
