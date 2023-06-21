@@ -39,6 +39,17 @@
     4. Make sure that all tables and procedures are executed.                                                                                                               
 
        ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/4.2.png "Procedures")    ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/4.1.png "Tables")
+
+
+## Pproject layout :
+
+ ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/welcome.png "Welcome")
+ ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/login.png "Login")
+ ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/admin%20form.png "Admin form")
+ ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/customer%20form.png "Customer form")
+ ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/Driver%20form.png "Driver form")
+
+
       
     
 
