@@ -1,5 +1,5 @@
 # ***Courier management system***
-![](https://[github.com/Your_Repository_Name/Your_GIF_Name.gif](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/EIG1.gif))
+![](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/EIG1.gif)
 
 ### Welcome to the courier management system web application! This C# application is designed to manage couriers, and deliveries between customers and drivers and improve efficiency & functionality .
 
