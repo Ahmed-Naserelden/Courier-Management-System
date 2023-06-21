@@ -144,6 +144,9 @@ namespace Courier_Management_System
             conn.Open();
             label1.Text = LoginForm.current_user;
 
+            this.MinimumSize = new Size(1195, 666);
+            this.MaximumSize = new Size(1195, 666);
+
         }
 
         private void viewOrder_Click(object sender, EventArgs e)
