@@ -37,8 +37,7 @@
        ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/3.png "Run script")
     4. Make sure that all tables and procedures are executed.                                                                                                               
 
-       ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/4.2.png "Procedures")                                                
-       ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/4.1.png "Tables")
+       ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/4.2.png "Procedures")    ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/4.1.png "Tables")
       
     
 
