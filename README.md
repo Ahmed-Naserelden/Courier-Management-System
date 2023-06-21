@@ -30,10 +30,10 @@
 * ### Open Oracle SQL developer and create a new connection of a username "scott" and a password "tiger".
     ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/new%20connection.png "create new connection")
 * ### Create the required tables and procedures in the database by the following :
-    1. Open SQL worksheet (CTRL-Shift-W) .
+    1. Open SQL worksheet (CTRL-Shift-W) .                                                                                                                                     
       ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/1.png "SQL worksheet")
     2. Copy the SQL code found in (Oracle commands.txt) found in Database file .
-    3. Run the script (F5)
+    3. Run the script (F5)                                                                                                                                                         
        ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/3.png "Run script")
     4. Make sure that all tables and procedures are executed.                                                                                                                        
        ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/4.1.png "Tables")
