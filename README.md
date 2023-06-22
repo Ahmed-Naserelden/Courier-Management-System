@@ -41,7 +41,7 @@
        ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/4.2.png "Procedures")    ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/4.1.png "Tables")
 
 
-## Pproject layout :
+## Project layout :
 
  ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/welcome.png "Welcome")
  ![picture alt](https://github.com/abdalla-am/Courier-Management-System/blob/master/Readme_img/login.png "Login")
