@@ -21,8 +21,6 @@ namespace Courier_Management_System
 
 
             Application.Run(new WelcomeForm());
-            System.Threading.Thread.Sleep(00);
-            Application.Run(new LoginForm());
         }
     }
 }
