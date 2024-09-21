@@ -14,7 +14,6 @@ namespace Courier_Management_System
     public partial class WelcomeForm : Form
     {
 
-        private System.Windows.Forms.Timer tmr;
 
         public WelcomeForm()
         {
@@ -41,23 +40,17 @@ namespace Courier_Management_System
             //--------------------
 
 
-
-
-            //tmr = new System.Windows.Forms.Timer();
-            //tmr.Tick += delegate
-            //{
-            //    this.Hide();
-            //};
-            //tmr.Interval = (int)TimeSpan.FromMinutes(0.1).TotalMilliseconds;
-            //tmr.Start();
-
-            //System.Threading.Thread.Sleep(5000);
-            //countdownTimer();
-            //goToLogin()
-
         }
 
- 
+        private void goTologinform()
+        {
+            LoginForm home = new LoginForm();
+            home.Tag = this;
+            home.Show(this);
+            home.StartPosition = FormStartPosition.Manual;
+            home.Location = this.Location;
+            this.Hide();
+        }
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -74,6 +67,9 @@ namespace Courier_Management_System
 
         }
 
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            goTologinform();
+        }
     }
 }

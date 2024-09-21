@@ -276,6 +276,7 @@
             this.DesktopPanel.Name = "DesktopPanel";
             this.DesktopPanel.Size = new System.Drawing.Size(700, 463);
             this.DesktopPanel.TabIndex = 15;
+            this.DesktopPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DesktopPanel_Paint);
             // 
             // CustomerFrom
             // 

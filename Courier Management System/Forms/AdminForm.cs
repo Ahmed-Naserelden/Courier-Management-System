@@ -144,6 +144,9 @@ namespace Courier_Management_System
             conn.Open();
             label1.Text = LoginForm.current_user;
 
+            this.MinimumSize = new Size(1195, 666);
+            this.MaximumSize = new Size(1195, 666);
+
         }
 
         private void viewOrder_Click(object sender, EventArgs e)
@@ -214,25 +217,7 @@ namespace Courier_Management_System
 
         }
 
-        private void report1ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form1 f = new Form1();
-            f.Show();
-            this.Hide();
-        }
-
-        private void report2ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form2 f = new Form2();
-            f.Show();
-            this.Hide();
-        }
-
-        private void showCrystalReportsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
+      
         private void label1_Click(object sender, EventArgs e)
         {
 

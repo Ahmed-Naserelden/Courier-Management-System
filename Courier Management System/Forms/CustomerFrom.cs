@@ -149,7 +149,11 @@ namespace Courier_Management_System
         private void HomeForm_Load(object sender, EventArgs e)
         {
             label1.Text = CustomerAccountInfo.user.Name;
-            
+
+
+            this.MinimumSize = new Size(1195, 666);
+            this.MaximumSize = new Size(1195, 666);
+
         }
 
 
@@ -226,6 +230,11 @@ namespace Courier_Management_System
         private void view_acc_info_click(object sender, EventArgs e)
         {
             OpenChildForm(new AccountForm(), sender) ;
+        }
+
+        private void DesktopPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 
